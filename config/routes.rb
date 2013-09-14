@@ -1,4 +1,10 @@
 ThingsOfNetRails::Application.routes.draw do
+  resources :users
+  root to: "welcome#home"
+  match '/signup',  to: 'users#new',       via: 'get'
+  match '/help',    to: 'welcome#help',    via: 'get'
+  match '/about',   to: 'welcome#about',   via: 'get'
+  match '/contact', to: 'welcome#contact', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
