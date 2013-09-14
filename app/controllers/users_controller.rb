@@ -3,12 +3,28 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user= User.find(params[:id])
+  end
+
   def new
   	@user = User.new
   end
-def create
+
+  def update
+    @user= User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+       render 'edit'
+	end
+  end
+
+  def create
     @user = User.new(user_params)
     if @user.save
+      sign_in @user
       flash[:success] = "Welcome to Ipv6&Rails"
       redirect_to @user
     else
@@ -22,5 +38,4 @@ def create
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
-
 end
