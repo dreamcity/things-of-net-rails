@@ -1,7 +1,10 @@
 ThingsOfNetRails::Application.routes.draw do
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   root to: "welcome#home"
   match '/signup',  to: 'users#new',       via: 'get'
+  match '/signin',  to: 'sessions#new',     via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/help',    to: 'welcome#help',    via: 'get'
   match '/about',   to: 'welcome#about',   via: 'get'
   match '/contact', to: 'welcome#contact', via: 'get'
