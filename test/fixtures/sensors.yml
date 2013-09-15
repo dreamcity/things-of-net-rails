@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ser_name: MyString
+  ser_data: MyString
+  user_id: 1
+
+two:
+  ser_name: MyString
+  ser_data: MyString
+  user_id: 1
