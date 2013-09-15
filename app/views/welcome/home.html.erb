@@ -1,11 +1,51 @@
+<% if signed_in? %>
+  <div class="row1">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+     <!--  <section>
+        <script>
+        function addOne(){
+          var val = document.getElementsByTagName("input")[0];
+          val.value = window.parseInt(val.value) + 1;
+           }
+        </script>
+        <input id="val" value="1"/><button onclick="addOne()" >add a sensor</button> 
 
-<h1>Welcome#home</h1>
-<div class="center hero-unit">
-  <h1>Welcome to the Sample App</h1>
-
-  <h2>
-    This is the home page for the
-  </h2>
-
+      </section> -->
+      <section>
+        <%= render 'shared/sensor_form' %>
+      </section>
+    </aside>
+  </div>
+    <div class="row2">
+    <aside class="span4">
+      <% if current_user.sensors.any? %>
+      <h3>Sensors (<%= current_user.sensors.count %>)</h3>
+      <ol class="sensors">
+          <% current_user.sensors.each do |sensor| %>
+            <li>
+            <% if sensor.ser_name!=nil %>
+              <span ><%= sensor.ser_name %></span>
+              <span >
+                <%= sensor.ser_data %>.
+              </span>              
+              <%= link_to "delete", sensor, method: :delete,
+                                            data: { confirm: "You sure?" } %>
+              <% end %>
+            </li>
+        <% end %>
+      </ol>
+    <% end %>
+    </aside>
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome to the Sample App</h1>
+    <h2>
+      This is the home page
+    </h2>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
+<% end %>

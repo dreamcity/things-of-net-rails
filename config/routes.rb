@@ -1,6 +1,6 @@
 ThingsOfNetRails::Application.routes.draw do
   resources :users 
-  resources :sensors, only:[:create, :destroy]
+  resources :sensors, only:[:new,:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   root to: "welcome#home"
   match '/signup',  to: 'users#new',       via: 'get'

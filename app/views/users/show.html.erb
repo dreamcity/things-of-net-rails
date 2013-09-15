@@ -10,13 +10,4 @@
       </h1>
     </section>
   </aside>
-  <div class="span8">
-    <% if @user.sensors.any? %>
-      <h3>sensors (<%= @user.sensors.count %>)</h3>
-      <ol class="sensors">
-        <%= render @sensors %>
-      </ol>
-      <%= will_paginate @sensors %>
-    <% end %>
-  </div>
 </div>

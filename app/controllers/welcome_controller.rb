@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def home
+  	@sensor = current_user.sensors.build if signed_in?
   end
 
   def help

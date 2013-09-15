@@ -20,7 +20,7 @@ class SensorsController < ApplicationController
 	  private
 
 	    def sensor_params
-	      params.require(:sensor).permit(:ser_name, :ser_data)
+	      params.require(:sensor).permit(:sen_name, :sen_data)
 	    end
 
 	    # def correct_user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130914124416) do
+ActiveRecord::Schema.define(version: 20130915110016) do
 
   create_table "sensors", force: true do |t|
     t.string   "ser_name"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20130914124416) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "cs"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
