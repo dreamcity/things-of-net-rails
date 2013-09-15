@@ -1,0 +1,28 @@
+ <h2>Sensors</h2>
+<% @user.sensors.each do |sensor| %>
+  <p>
+    <strong>sen_name:</strong>
+    <%= sensor.sen_name %>
+  </p>
+ 
+  <p>
+    <strong>sen_data:</strong>
+    <%= sensor.sen_data %>
+  </p>
+<% end %>
+ 
+<h2>Add a sensor:</h2>
+<%= form_for([@user, @user.sensors.build]) do |f| %>
+  <p>
+    <%= f.label :sen_name %><br />
+    <%= f.text_field :sen_name %>
+  </p>
+  <p>
+    <%= f.label :sen_data %><br />
+    <%= f.text_area :sen_data %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 

@@ -1,0 +1,10 @@
+<%= form_for(@sensor) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+  	<%= f.label :SensorName %>
+  	<%= f.text_field :ser_name %>
+  	<%= f.label :SensorData %>
+    <%= f.text_field :ser_data %>
+  </div>
+  <%= f.submit "add a sensor", class: "btn btn-large btn-primary" %>
+<% end %>

@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
-	before_action :signed_in_user, only: [:index, :edit, :update]
-	before_action :correct_user, only: [:edit,:update]
-  def show
-    @user = User.find(params[:id])
-  end
+	before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
+	before_action :correct_user, only: [:edit,:update,:destroy]
 
   def index
     @users = User.paginate(:page => params[:page], :per_page => 1)
@@ -11,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @microposts = @user.microposts.paginate(page: params[:page], :per_page => 5)
+    @sensors = @user.sensors.paginate(page: params[:page], :per_page => 5)
   end
   def edit
     # @user= User.find(params[:id])
@@ -21,6 +18,11 @@ class UsersController < ApplicationController
   	@user = User.new
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User destroyed."
+    redirect_to root_path
+  end
   def update
     @user= User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -47,14 +49,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
-    end
-
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
     end
 
     def correct_user
