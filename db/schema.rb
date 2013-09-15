@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20130914085102) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.string   "photo"
     t.string   "remember_token"
     t.boolean  "cs"
   end
